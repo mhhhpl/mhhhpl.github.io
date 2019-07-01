@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="mhhhpl&#39;s blog">
 <meta property="og:description" content="将数据导入stata（1）用excel复制粘贴，选择第一行是数据还是变量名（2）file——import，然后导入各种样式的数据 导入后将数据保存为.dta格式 变量标签的修改 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写 调用数据及基本操作（1）调用数据1use D:\Desktop\stata_陈强\nerlove.dta,clear 备注：调动数据,dt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-01T08:51:44.297Z">
+<meta property="og:updated_time" content="2019-07-01T09:25:00.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高计及stata应用陈强版第4章">
 <meta name="twitter:description" content="将数据导入stata（1）用excel复制粘贴，选择第一行是数据还是变量名（2）file——import，然后导入各种样式的数据 导入后将数据保存为.dta格式 变量标签的修改 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写 调用数据及基本操作（1）调用数据1use D:\Desktop\stata_陈强\nerlove.dta,clear 备注：调动数据,dt">
@@ -368,7 +368,7 @@
                 
               
 
-              <time title="创建时间：2019-07-01 16:27:13 / 修改时间：16:51:44" itemprop="dateCreated datePublished" datetime="2019-07-01T16:27:13+08:00">2019-07-01</time>
+              <time title="创建时间：2019-07-01 16:27:13 / 修改时间：17:25:00" itemprop="dateCreated datePublished" datetime="2019-07-01T16:27:13+08:00">2019-07-01</time>
             
 
             
@@ -428,6 +428,7 @@
 <h3 id="变量标签的修改"><a href="#变量标签的修改" class="headerlink" title="变量标签的修改"></a>变量标签的修改</h3><p> 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写</p>
 <h3 id="调用数据及基本操作"><a href="#调用数据及基本操作" class="headerlink" title="调用数据及基本操作"></a>调用数据及基本操作</h3><p>（1）调用数据<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">D</span>:\Desktop\stata_陈强\nerlove.dta,<span class="keyword">clear</span></span><br></pre></td></tr></table></figure></p>
 <p>备注：调动数据,dta数据中不可以出现（1963），否则不可识别<br>（2）审视数据<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">d</span></span><br><span class="line"><span class="comment">///观察数据的变量名称、标签等</span></span><br><span class="line"><span class="keyword">label</span> data <span class="string">"Nerlove 1963 paper"</span></span><br><span class="line"><span class="comment">///备注此数据集来自Nerlove 1963 paper</span></span><br><span class="line"><span class="keyword">list</span> tc <span class="built_in">q</span></span><br><span class="line"><span class="comment">///查看tc和q的具体数值，如果中间需要停止，可以点击“break”图标</span></span><br><span class="line"><span class="comment">///左侧命令窗口，单击旧命令出现在命令窗口，双击则直接执行</span></span><br><span class="line"><span class="keyword">list</span> tc q <span class="keyword">in</span> 1/5</span><br><span class="line"><span class="comment">///罗列tc、q第1~第5个数值</span></span><br><span class="line"><span class="keyword">list</span> tc q <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="comment">///罗列tc和q中所有q大于等于10000的样本</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="comment">///扔掉所有不符合要求的样本</span></span><br><span class="line"><span class="comment">///注意：删掉的是整个样本，而不是一个数值</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="考察数据的统计特征"><a href="#考察数据的统计特征" class="headerlink" title="考察数据的统计特征"></a>考察数据的统计特征</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sum</span> </span><br><span class="line"><span class="comment">///没有规定要观察的变量，将显示所有变量的obs（number）、mean、min、max</span></span><br><span class="line"><span class="keyword">sum</span> <span class="built_in">q</span></span><br><span class="line"><span class="keyword">sum</span> q <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="keyword">sum</span> q,detail</span><br><span class="line"><span class="comment">///第一个显示q的obs、mean、min、max</span></span><br><span class="line"><span class="comment">///第三个还会显示百分位数（percentilea）、方差（variance）、偏度（skewness）、峰度（kurtosis）</span></span><br><span class="line"><span class="keyword">tabulate</span> <span class="keyword">pl</span></span><br><span class="line"><span class="comment">///显示pl的经验累积分布函数，tabulate意味“把.....做成表格”</span></span><br><span class="line"><span class="keyword">pwcorr</span> <span class="keyword">pl</span> pf pk，sig star（.05）</span><br><span class="line"><span class="comment">///pwcorr意味“pariwise correlation（两两相关）”</span></span><br><span class="line"><span class="comment">///sig表示显示相关系数的显著性水平，即p值（p值代表这个事件为假要推翻它的概率，所以p值越小越好）</span></span><br><span class="line"><span class="comment">///star（.05）表示将显著性水平≤0.05的标上星号</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -657,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#将数据导入stata"><span class="nav-number">1.</span> <span class="nav-text">将数据导入stata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量标签的修改"><span class="nav-number">2.</span> <span class="nav-text">变量标签的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用数据及基本操作"><span class="nav-number">3.</span> <span class="nav-text">调用数据及基本操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#将数据导入stata"><span class="nav-number">1.</span> <span class="nav-text">将数据导入stata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量标签的修改"><span class="nav-number">2.</span> <span class="nav-text">变量标签的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用数据及基本操作"><span class="nav-number">3.</span> <span class="nav-text">调用数据及基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#考察数据的统计特征"><span class="nav-number">4.</span> <span class="nav-text">考察数据的统计特征</span></a></li></ol></div>
             
 
           </div>
