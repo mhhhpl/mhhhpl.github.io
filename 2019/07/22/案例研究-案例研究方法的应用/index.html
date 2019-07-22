@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpg?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpg?v=6.6.0">
+
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="作者：罗伯特·K.殷关键词：竞争性解释、复现逻辑 第Ⅰ部分：绪论（一）    案例研究方法的简要回顾 案例研究设计的基本类型【P9】关键是对嵌入的分析单位的理解： 数据收集应该从不同及相同的来源中检查和复查结果的一致性，相比多来源说，更有说服力【P119三角互证原理】。（理解：如果可以从两个出发点相互对立的假说中得到同一组数据，那么便更具说服力了；或者【P142】比如你要验证军事基地的撤销对当地的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="案例研究+案例研究方法的应用">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/案例研究-案例研究方法的应用/index.html">
+<meta property="og:site_name" content="mhhhpl&#39;s blog">
+<meta property="og:description" content="作者：罗伯特·K.殷关键词：竞争性解释、复现逻辑 第Ⅰ部分：绪论（一）    案例研究方法的简要回顾 案例研究设计的基本类型【P9】关键是对嵌入的分析单位的理解： 数据收集应该从不同及相同的来源中检查和复查结果的一致性，相比多来源说，更有说服力【P119三角互证原理】。（理解：如果可以从两个出发点相互对立的假说中得到同一组数据，那么便更具说服力了；或者【P142】比如你要验证军事基地的撤销对当地的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-22T07:46:31.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="案例研究+案例研究方法的应用">
+<meta name="twitter:description" content="作者：罗伯特·K.殷关键词：竞争性解释、复现逻辑 第Ⅰ部分：绪论（一）    案例研究方法的简要回顾 案例研究设计的基本类型【P9】关键是对嵌入的分析单位的理解： 数据收集应该从不同及相同的来源中检查和复查结果的一致性，相比多来源说，更有说服力【P119三角互证原理】。（理解：如果可以从两个出发点相互对立的假说中得到同一组数据，那么便更具说服力了；或者【P142】比如你要验证军事基地的撤销对当地的">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/22/案例研究-案例研究方法的应用/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>案例研究+案例研究方法的应用 | mhhhpl's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mhhhpl's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/22/案例研究-案例研究方法的应用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="马荟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mhhhpl's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">案例研究+案例研究方法的应用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-22 15:34:31 / 修改时间：15:46:31" itemprop="dateCreated datePublished" datetime="2019-07-22T15:34:31+08:00">2019-07-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/案例研究/" itemprop="url" rel="index"><span itemprop="name">案例研究</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作者：罗伯特·K.殷<br>关键词：竞争性解释、复现逻辑</p>
+<h2 id="第Ⅰ部分：绪论"><a href="#第Ⅰ部分：绪论" class="headerlink" title="第Ⅰ部分：绪论"></a>第Ⅰ部分：绪论</h2><h3 id="（一）-案例研究方法的简要回顾"><a href="#（一）-案例研究方法的简要回顾" class="headerlink" title="（一）    案例研究方法的简要回顾"></a>（一）    案例研究方法的简要回顾</h3><ol>
+<li>案例研究设计的基本类型【P9】<br>关键是对嵌入的分析单位的理解：</li>
+<li>数据收集<br>应该从不同及相同的来源中检查和复查结果的一致性，相比多来源说，更有说服力【P119三角互证原理】。（理解：如果可以从两个出发点相互对立的假说中得到同一组数据，那么便更具说服力了；或者【P142】比如你要验证军事基地的撤销对当地的经济发展状况没有明显影响，你可以分析失业率的变化，也可以分析零售业和当地设备提供商的变化，从不同的角度论证）</li>
+<li>竞争性假说<br>（1）关注文献综述的时候需要关注竞争性假说和替代性假说。竞争性假说是完全不可共存的，替代性假说是相互补充的。<br>（2）案例研究的关键就是验证假说。比如：假说为军事基地的关闭对A、B、C、D的各种影响，要做的便是收集数据和案例，对上述假说进行一一验证。同时需要关注竞争性假说对因果关系的解释，分析竞争性假说在哪个环节出现了问题。但需要注意“奥卡姆的剃刀”，案例研究的关键是验证假说，而不是分析竞争性假说的解释力。做案例验证的时间序列分析，如果可能的话（董玄师兄的博士论文）【P19】</li>
+</ol>
+<h3 id="（二）-田野笔记"><a href="#（二）-田野笔记" class="headerlink" title="（二）    田野笔记"></a>（二）    田野笔记</h3><h3 id="（三）-理论在案例研究中的作用"><a href="#（三）-理论在案例研究中的作用" class="headerlink" title="（三）    理论在案例研究中的作用"></a>（三）    理论在案例研究中的作用</h3><ol>
+<li>探索性案例<br>（1）理论的意义：针对案例本身，提出研究所需的蓝图，如一个假设性的情况<br>（2）探索性案例：借助操作化的概念构建研究框架or逻辑模型【P35、158等】<br>（3）案例筛选原则：①案例结果具有典型性。复现逻辑，相似结果是否具有相似的原因②反映研究的政策取向。不同的主体和对象在跨组织行动中的力量对比是否存在差异③区域代表性。取得案例后根据案例是否完备进行逐步筛选。<br>（4）选择案例的分析单位：如针对问题“在地方建立职业培训与经济发展的联系”的分析单位有联合项目、联合计划、跨组织行动，最终考虑到跨组织行动的涵盖性、更有利于地方能力建设以及现有文献关注较少，选择跨组织行动</li>
+<li>描述性案例<br>（1）问题：非分类教育是否真正不同于分类教育制度的实践<br>（2）关键点：①案例选择要遵循复现逻辑②根据现有理论，分析地方教育制度必须包含哪些具体的教育实践，才可以被看做分类教育、非分类教育的一个范例③分类教育便是对照组和竞争对手</li>
+<li>解释性案例研究Ⅰ：因素理论<br>先列举因素，然后通过调研or实证进行检验</li>
+<li>解释性案例研究Ⅱ：how 及why理论<br>（1）适用问题：how及why研究结果应用在了实践上<br>（2）三大竞争性理论：知识驱动理论、社会互动理论、问题解决理论</li>
+</ol>
+<h2 id="第Ⅱ部分：描述性案例研究-案例的完整呈现"><a href="#第Ⅱ部分：描述性案例研究-案例的完整呈现" class="headerlink" title="第Ⅱ部分：描述性案例研究-案例的完整呈现"></a>第Ⅱ部分：描述性案例研究-案例的完整呈现</h2><p>  该部分三个案例为“一位新上任教育领导的起步阶段”“巡逻中的市民：开放式访谈”“一项关于社区组织的案例研究”</p>
+<ol>
+<li>描述性案例：问答形式</li>
+<li>提问题的方式：when what where who what how（运转、设置）why…</li>
+</ol>
+<h2 id="第Ⅲ部分：解释性案例研究"><a href="#第Ⅲ部分：解释性案例研究" class="headerlink" title="第Ⅲ部分：解释性案例研究"></a>第Ⅲ部分：解释性案例研究</h2><p>  解释性案例研究注重因果推理，可以尽量借鉴实验研究的方法，寻找和检验竞争性解释，如果有充分的证据可以证伪竞争性解释，研究者可以对最初的解释和讨论抱有更大的信心【P101】。</p>
+<h3 id="（一）-一个简短的例子"><a href="#（一）-一个简短的例子" class="headerlink" title="（一）    一个简短的例子"></a>（一）    一个简短的例子</h3><p>  例子：联邦资助对某校计算机系的影响【P103】。X是CER基金，f（X）是①科研人员兴趣的变化②科研人员数量增加和领域拓展，最后导致了Y即该校计算机事业的发展</p>
+<h3 id="（二）-解释性案例研究的基本要素"><a href="#（二）-解释性案例研究的基本要素" class="headerlink" title="（二）    解释性案例研究的基本要素"></a>（二）    解释性案例研究的基本要素</h3><pre><code>逻辑模型：复现逻辑复现的依据。重复性研究越多，其证据的说服力就越强，其证据的说服力越强，研究结论也就越扎实【P107】。
+</code></pre><h3 id="（三）-通过战略规划使企业转型"><a href="#（三）-通过战略规划使企业转型" class="headerlink" title="（三）    通过战略规划使企业转型"></a>（三）    通过战略规划使企业转型</h3><p>案例选择标准：典型性</p>
+<h3 id="（四）-竞争性解释"><a href="#（四）-竞争性解释" class="headerlink" title="（四）    竞争性解释"></a>（四）    竞争性解释</h3><ol>
+<li>假设的竞争性解释：①零假设，即认为结果是偶然的，不存在任何干预②“历史”、“技术”等因素，即几乎所有文章中都包含的因素③研究者通过梳理文献得出的理论，我的理解应该是他归纳出的某个中层概念，如“村社理性”</li>
+<li>实质的竞争性解释：竞争性和替代性。不是所有的竞争性解释都要推翻，有一些竞争性解释是对本文的补充</li>
+</ol>
+<h2 id="第Ⅳ部分：跨案例分析"><a href="#第Ⅳ部分：跨案例分析" class="headerlink" title="第Ⅳ部分：跨案例分析"></a>第Ⅳ部分：跨案例分析</h2><p>   本章节的两个案例为“公私立大学的科研申请程序”和“转型企业的案例研究”。</p>
+<ol>
+<li>案例选择：案例选取不是遵循抽样逻辑而是遵循典型性的逻辑</li>
+<li>案例分类：如【P156】对大学科研项目申请流程谁来主导的分类；如【P172】对企业是否完成转型的分类</li>
+<li>操作化定义：如转型公司的操作化定义【P171】可以是一个整体的框架，包含表征转型的管理、营销、生产、业务流程、相关政策的特征，可以以逻辑模型的形式展现出来，一个典型的逻辑模型包括：“投入-活动-产出-效果”【P194】<ol start="4">
+<li>复现逻辑：归纳异同，如转型是否需要相同的条件</li>
+<li>分析解释：得出结论</li>
+</ol>
+</li>
+</ol>
+<h2 id="第Ⅴ部分：案例研究评估"><a href="#第Ⅴ部分：案例研究评估" class="headerlink" title="第Ⅴ部分：案例研究评估"></a>第Ⅴ部分：案例研究评估</h2><p>  本章节共有三个案例，“对某社区联盟的评估”、“跨区机动车防盗联合小组”、“对艾滋病社区规划的技术援助”。六中适合进行案例评估的情况：描述性、探索性、批评性分析、项目实施分析、项目效果分析和跨案例分析。</p>
+<ol>
+<li>案例评估的优势：中期分析；厘清现象和本质之间的关系；解决选择多样性导致样本流失带来的问题</li>
+<li>对案例的界定：如案例研究的范畴是社区联盟为减少社区内违法违规现象做出的努力，案例研究的重点是该社区发起的“重建运动”的影响</li>
+<li>由“对艾滋病社区规划的技术援助”案例展开逻辑的思考：冲突性的引入-假设提出-结合操作化定义构建复现逻辑模型-案例复现-假设验证-得出结论</li>
+</ol>
+<h4 id="摘抄："><a href="#摘抄：" class="headerlink" title="摘抄："></a>摘抄：</h4><ul>
+<li><p>P4案例研究定义：将当前现象比如“案例”置于现实情境中所做的实证研究，尤其是在现象和社会背景情境没有明显边界的情况下</p>
+</li>
+<li><p>P5案例研究适用于描述性和探索性研究</p>
+</li>
+<li>P135：唐纳德·坎贝尔说“我越来越倾向于这样一个结论，科学方法的核心不是实验本身，而是措辞之中所暗含的策略——似是而非的竞争性假设”</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/14/案例研究-案例教学/" rel="next" title="案例研究—-案例教学">
+                <i class="fa fa-chevron-left"></i> 案例研究—-案例教学
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.jpg" alt="马荟">
+            
+              <p class="site-author-name" itemprop="name">马荟</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第Ⅰ部分：绪论"><span class="nav-number">1.</span> <span class="nav-text">第Ⅰ部分：绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（一）-案例研究方法的简要回顾"><span class="nav-number">1.1.</span> <span class="nav-text">（一）    案例研究方法的简要回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（二）-田野笔记"><span class="nav-number">1.2.</span> <span class="nav-text">（二）    田野笔记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（三）-理论在案例研究中的作用"><span class="nav-number">1.3.</span> <span class="nav-text">（三）    理论在案例研究中的作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第Ⅱ部分：描述性案例研究-案例的完整呈现"><span class="nav-number">2.</span> <span class="nav-text">第Ⅱ部分：描述性案例研究-案例的完整呈现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第Ⅲ部分：解释性案例研究"><span class="nav-number">3.</span> <span class="nav-text">第Ⅲ部分：解释性案例研究</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（一）-一个简短的例子"><span class="nav-number">3.1.</span> <span class="nav-text">（一）    一个简短的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（二）-解释性案例研究的基本要素"><span class="nav-number">3.2.</span> <span class="nav-text">（二）    解释性案例研究的基本要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（三）-通过战略规划使企业转型"><span class="nav-number">3.3.</span> <span class="nav-text">（三）    通过战略规划使企业转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（四）-竞争性解释"><span class="nav-number">3.4.</span> <span class="nav-text">（四）    竞争性解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第Ⅳ部分：跨案例分析"><span class="nav-number">4.</span> <span class="nav-text">第Ⅳ部分：跨案例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第Ⅴ部分：案例研究评估"><span class="nav-number">5.</span> <span class="nav-text">第Ⅴ部分：案例研究评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#摘抄："><span class="nav-number">5.0.1.</span> <span class="nav-text">摘抄：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马荟</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
