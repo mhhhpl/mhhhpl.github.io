@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpg?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpg?v=6.6.0">
+
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.将数据导入stata（1）用excel复制粘贴，选择第一行是数据还是变量名（2）file——import，然后导入各种样式的数据 导入后将数据保存为.dta格式 2.变量标签的修改 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写 3.调用数据及基本操作（1）调用数据1use D:\Desktop\stata_陈强\nerlove.dta,clear 备注：调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高计及stata应用陈强版第4章">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/stata-高计及stata应用陈强版第4章/index.html">
+<meta property="og:site_name" content="mhhhpl&#39;s blog">
+<meta property="og:description" content="1.将数据导入stata（1）用excel复制粘贴，选择第一行是数据还是变量名（2）file——import，然后导入各种样式的数据 导入后将数据保存为.dta格式 2.变量标签的修改 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写 3.调用数据及基本操作（1）调用数据1use D:\Desktop\stata_陈强\nerlove.dta,clear 备注：调">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-02T00:52:38.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高计及stata应用陈强版第4章">
+<meta name="twitter:description" content="1.将数据导入stata（1）用excel复制粘贴，选择第一行是数据还是变量名（2）file——import，然后导入各种样式的数据 导入后将数据保存为.dta格式 2.变量标签的修改 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写 3.调用数据及基本操作（1）调用数据1use D:\Desktop\stata_陈强\nerlove.dta,clear 备注：调">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/stata-高计及stata应用陈强版第4章/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>高计及stata应用陈强版第4章 | mhhhpl's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mhhhpl's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/stata-高计及stata应用陈强版第4章/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="马荟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mhhhpl's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高计及stata应用陈强版第4章
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-01 16:27:13" itemprop="dateCreated datePublished" datetime="2019-07-01T16:27:13+08:00">2019-07-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-02 08:52:38" itemprop="dateModified" datetime="2019-07-02T08:52:38+08:00">2019-07-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/stata/" itemprop="url" rel="index"><span itemprop="name">stata</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-将数据导入stata"><a href="#1-将数据导入stata" class="headerlink" title="1.将数据导入stata"></a>1.将数据导入stata</h3><p>（1）用excel复制粘贴，选择第一行是数据还是变量名<br>（2）file——import，然后导入各种样式的数据<br> 导入后将数据保存为.dta格式</p>
+<h3 id="2-变量标签的修改"><a href="#2-变量标签的修改" class="headerlink" title="2.变量标签的修改"></a>2.变量标签的修改</h3><p> 打开倒数第三个图标，相应的变量标签可以直接修改，注意stata中的变量名一般用小写</p>
+<h3 id="3-调用数据及基本操作"><a href="#3-调用数据及基本操作" class="headerlink" title="3.调用数据及基本操作"></a>3.调用数据及基本操作</h3><p>（1）调用数据<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">D</span>:\Desktop\stata_陈强\nerlove.dta,<span class="keyword">clear</span></span><br></pre></td></tr></table></figure></p>
+<p>备注：调动数据,dta数据中不可以出现（1963），否则不可识别<br>（2）审视数据<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">d</span></span><br><span class="line"><span class="comment">///观察数据的变量名称、标签等</span></span><br><span class="line"><span class="keyword">label</span> data <span class="string">"Nerlove 1963 paper"</span></span><br><span class="line"><span class="comment">///备注此数据集来自Nerlove 1963 paper</span></span><br><span class="line"><span class="keyword">list</span> tc <span class="built_in">q</span></span><br><span class="line"><span class="comment">///查看tc和q的具体数值，如果中间需要停止，可以点击“break”图标</span></span><br><span class="line"><span class="comment">///左侧命令窗口，单击旧命令出现在命令窗口，双击则直接执行</span></span><br><span class="line"><span class="keyword">list</span> tc q <span class="keyword">in</span> 1/5</span><br><span class="line"><span class="comment">///罗列tc、q第1~第5个数值</span></span><br><span class="line"><span class="keyword">list</span> tc q <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="comment">///罗列tc和q中所有q大于等于10000的样本</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="comment">///扔掉所有不符合要求的样本</span></span><br><span class="line"><span class="comment">///注意：删掉的是整个样本，而不是一个数值</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="4-考察数据的统计特征"><a href="#4-考察数据的统计特征" class="headerlink" title="4.考察数据的统计特征"></a>4.考察数据的统计特征</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sum</span> </span><br><span class="line"><span class="comment">///没有规定要观察的变量，将显示所有变量的obs（number）、mean、min、max</span></span><br><span class="line"><span class="keyword">sum</span> <span class="built_in">q</span></span><br><span class="line"><span class="keyword">sum</span> q <span class="keyword">if</span> q&gt;=10000</span><br><span class="line"><span class="keyword">sum</span> q,detail</span><br><span class="line"><span class="comment">///第一个显示q的obs、mean、min、max</span></span><br><span class="line"><span class="comment">///第三个还会显示百分位数（percentilea）、方差（variance）、偏度（skewness）、峰度（kurtosis）</span></span><br><span class="line"><span class="keyword">tabulate</span> <span class="keyword">pl</span></span><br><span class="line"><span class="comment">///显示pl的经验累积分布函数，tabulate意味“把.....做成表格”</span></span><br><span class="line"><span class="keyword">pwcorr</span> <span class="keyword">pl</span> pf pk，sig star（.05）</span><br><span class="line"><span class="comment">///pwcorr意味“pariwise correlation（两两相关）”</span></span><br><span class="line"><span class="comment">///sig表示显示相关系数的显著性水平，即p值（p值代表这个事件为假要推翻它的概率，所以p值越小越好）</span></span><br><span class="line"><span class="comment">///star（.05）表示将显著性水平≤0.05的标上星号</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-作图"><a href="#5-作图" class="headerlink" title="5.作图"></a>5.作图</h3><p>（1）画柱状图<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">histogram</span> q,width(1000) frequency</span><br><span class="line"><span class="comment">///histogram意为“直方图”，此命令可以简写为“hist”</span></span><br><span class="line"><span class="comment">///width表示柱状图的宽为1000</span></span><br><span class="line"><span class="comment">///frequency表示纵坐标为频数</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">kdensity</span> <span class="built_in">q</span></span><br><span class="line"><span class="comment">///这是连续的经验分布图。kernel是“核心，谷粒”、density是“密度”</span></span><br></pre></td></tr></table></figure>
+<p>（2）画散点图和线性拟合<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">scatter</span> tc <span class="built_in">q</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">gen</span> <span class="keyword">n</span>=_n</span><br><span class="line"><span class="comment">///第一个n是新变量的含义，_n表示第n个观测值</span></span><br><span class="line"><span class="keyword">scatter</span> tc q,mlabel（<span class="keyword">n</span>）mlabpos（6）</span><br><span class="line"><span class="comment">///mlabel（n）表示以n作为“mark label”的标签</span></span><br><span class="line"><span class="comment">///mlabpos（6）表示“mark label position”，把标签放在散点6点钟的位置</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">twoway</span>（<span class="keyword">scatter</span> tc q）（<span class="keyword">lfit</span> tc q）</span><br><span class="line"><span class="keyword">graph</span> <span class="keyword">save</span> scatter1</span><br><span class="line"><span class="keyword">twoway</span>（<span class="keyword">scatter</span> tc q）（qfit tc q）</span><br><span class="line"><span class="keyword">graph</span> <span class="keyword">save</span> scatter2</span><br><span class="line"><span class="keyword">graph</span> combine scatter1.gph scatter2.gph</span><br><span class="line"><span class="comment">///lfit含义为“linear fit”（线性拟合）</span></span><br><span class="line"><span class="comment">///qfit含义为“quadratic fit”（二次拟合）</span></span><br><span class="line"><span class="comment">///保存图片</span></span><br><span class="line"><span class="comment">///将两个图片同时展示出来</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-生成新变量"><a href="#6-生成新变量" class="headerlink" title="6.生成新变量"></a>6.生成新变量</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///本章根据模型需要生成新的变量</span></span><br><span class="line"><span class="keyword">g</span> lntc=<span class="built_in">log</span>(tc)</span><br><span class="line"><span class="keyword">g</span> lnq=<span class="built_in">log</span>(q)</span><br><span class="line"><span class="keyword">g</span> lnpl=<span class="built_in">log</span>(<span class="keyword">pl</span>)</span><br><span class="line"><span class="keyword">g</span> lnpf=<span class="built_in">log</span>(pf)</span><br><span class="line"><span class="keyword">g</span> lnpk=<span class="built_in">log</span>(pk)</span><br><span class="line"><span class="comment">///产生新的变量</span></span><br><span class="line"><span class="keyword">g</span> q2=q^2</span><br><span class="line"><span class="comment">///生成平方项</span></span><br><span class="line"><span class="keyword">g</span> lnplpk=lnpl*lnpk</span><br><span class="line"><span class="comment">///生成交互项</span></span><br><span class="line"><span class="keyword">g</span> larg=(q&gt;=10000)</span><br><span class="line"><span class="comment">///这个命令经常用于生成虚拟变量。当（）中的逻辑语句为真时，取值为1；为假，取值为0</span></span><br><span class="line"><span class="comment">///在书中其实际含义为：产量在10000以上定义为大企业</span></span><br><span class="line"><span class="keyword">rename</span> larg large</span><br><span class="line"><span class="comment">///修改变量名</span></span><br><span class="line"><span class="comment">///接下来我们想变更大企业为产量在6000以上，但是仍然使用large这个变量名</span></span><br><span class="line"><span class="comment">///方法1：</span></span><br><span class="line"><span class="keyword">replace</span> large=(q&gt;=6000)</span><br><span class="line"><span class="comment">///方法2：</span></span><br><span class="line"><span class="keyword">drop</span> large</span><br><span class="line"><span class="keyword">g</span> large=(q&gt;=6000)</span><br><span class="line"><span class="keyword">drop</span> ln*</span><br><span class="line"><span class="comment">///删除所有含有ln的变量</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-stata的计算器功能"><a href="#7-stata的计算器功能" class="headerlink" title="7. stata的计算器功能"></a>7. stata的计算器功能</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">display</span> <span class="built_in">log</span>(2)</span><br><span class="line"><span class="keyword">display</span> <span class="built_in">normal</span>(1.96)</span><br><span class="line"><span class="comment">///句式：display或者dis +表达</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-线性回归分析"><a href="#8-线性回归分析" class="headerlink" title="8. 线性回归分析"></a>8. 线性回归分析</h3><p>（1）普通线性回归<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf</span><br><span class="line"><span class="comment">///_cons表示常数项</span></span><br><span class="line"><span class="comment">///F统计量的p值为0.0000，说明这个回归方程显著性程度很高</span></span><br><span class="line"><span class="comment">///Residual表示残差平方和</span></span><br><span class="line"><span class="comment">///Root MSE表示这个方程的标准误差</span></span><br></pre></td></tr></table></figure></p>
+<p>（2）线性回归<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf,noc</span><br><span class="line"><span class="comment">///不要常数项的回归</span></span><br><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf <span class="keyword">if</span> q&gt;=6000</span><br><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf <span class="keyword">if</span> large</span><br><span class="line"><span class="comment">///只对大企业的样本进行回归</span></span><br><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf <span class="keyword">if</span> large==0</span><br><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf <span class="keyword">if</span> ~large</span><br><span class="line"><span class="comment">///只对小企业的样本进行回归</span></span><br><span class="line"><span class="comment">///~表示逻辑语句“非”</span></span><br></pre></td></tr></table></figure></p>
+<p>（3）预测拟合值<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">predict</span> intchat</span><br><span class="line"><span class="comment">///计算被解释变量的拟合值，并将其几位intchat</span></span><br><span class="line"><span class="keyword">predict</span> el,<span class="built_in">r</span></span><br><span class="line"><span class="keyword">predict</span> el2,residual</span><br><span class="line"><span class="comment">///计算残差</span></span><br><span class="line"><span class="comment">///这里也可以看出，如果predict后边什么选项都没有，默认是估计拟合值的</span></span><br></pre></td></tr></table></figure></p>
+<p>（4）计算估计系数<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///这里边lnq的系数是1/r，是规模报酬的倒数，所以可以利用lnq的系数估计规模报酬</span></span><br><span class="line"><span class="keyword">display</span> 1/_b[lnq]</span><br><span class="line"><span class="comment">///_b[lnq]表示lnq 的OLS系数估计值</span></span><br></pre></td></tr></table></figure></p>
+<p>（5）假设检验<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///由于规模报酬r=1.387，所以认为可能存在规模报酬递增的现象</span></span><br><span class="line"><span class="keyword">test</span> lnq=1</span><br><span class="line"><span class="comment">///这里的原假设是r=1，即规模报酬不变</span></span><br><span class="line"><span class="comment">///发现p值很小，故拒绝原假设，故认为存在规模报酬递增</span></span><br><span class="line"><span class="keyword">test</span> (lnq=1)(lnpl+lnpk+lnpf=1)</span><br><span class="line"><span class="comment">///这里原假设有两个：①(lnq=1)②(lnpl+lnpk+lnpf=1)</span></span><br><span class="line"><span class="comment">///依旧发现p值为0，拒绝原假设</span></span><br><span class="line"><span class="keyword">test</span> lnpl lnpk</span><br><span class="line"><span class="comment">///这里隐含的假设是lnpl=0；lnpk=0</span></span><br><span class="line"><span class="comment">///发现p值很大，0.3多，所以只能接受原假设，这两个系数都为0</span></span><br><span class="line"><span class="keyword">testnl</span> _b[lnpl]=_b[lnq]^2</span><br><span class="line"><span class="comment">///这里隐含的假设是lnpl的系数是lnq系数的平方</span></span><br><span class="line"><span class="comment">///发现p值很大，0.3多，所以只能接受原假设</span></span><br><span class="line"><span class="comment">///所以你要看你检验的是什么，p值越小，越要拒绝原假设</span></span><br></pre></td></tr></table></figure></p>
+<p>（6）新增变量图<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">avplot</span> lnq</span><br><span class="line"><span class="comment">///画lnq的新增变量图</span></span><br><span class="line"><span class="keyword">avplots</span></span><br><span class="line"><span class="comment">///画所有变量的新增变量图</span></span><br></pre></td></tr></table></figure></p>
+<p>（7）约束回归<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///此部分为约束回归</span></span><br><span class="line"><span class="comment">///如在经济理论“lnpl+lnpk+lnpf=1”的条件下进行回归</span></span><br><span class="line"><span class="keyword">constraint</span> def 1 lnpl+lnpk+lnpf=1</span><br><span class="line"><span class="keyword">cnsreg</span> lntc lnq lnpl lnpk lnpf,c(1)</span><br><span class="line"><span class="comment">///“constraint def 1 ”定义约束条件1</span></span><br><span class="line"><span class="comment">///“cnsreg”含义“constraint regression”</span></span><br><span class="line"><span class="keyword">cons</span> def 2 lnq=1</span><br><span class="line"><span class="keyword">cnsreg</span> lntc lnq lnpl lnpk lnpf,c(1-2)</span><br><span class="line"><span class="comment">///定义约束条件2</span></span><br><span class="line"><span class="comment">///c(1-2)表明这个回归要同时满足约束条件1-（杠，不是减）2</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="8-stata命令的存储与调用"><a href="#8-stata命令的存储与调用" class="headerlink" title="8. stata命令的存储与调用"></a>8. stata命令的存储与调用</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///r命令，如summarize调用结果用return list</span></span><br><span class="line"><span class="keyword">sum</span> <span class="built_in">q</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">list</span></span><br><span class="line"><span class="keyword">display</span> <span class="built_in">r</span>(sd)/<span class="built_in">r</span>(<span class="keyword">mean</span>)</span><br><span class="line"><span class="comment">///e命令，估计命令，调用结果用ereturn list</span></span><br><span class="line"><span class="keyword">reg</span> tc <span class="built_in">q</span></span><br><span class="line"><span class="keyword">ereturn</span> <span class="keyword">list</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-stata命令库的更新"><a href="#9-stata命令库的更新" class="headerlink" title="9. stata命令库的更新"></a>9. stata命令库的更新</h3><p>（1）ssc意为“statistical software components”，即“统计软件成分”，stata用户写的、Boston college维护的非官方统计程序集散地<br>（2）update all:更新stata命令库<br>（3）ssc new：罗列ssc提供的非官方、最新的命令<br>（4）ssc hot：罗列ssc提供的非官方、最流行的命令<br>（5）ssc install newcommand：安装ssc非官方命令<br>（6）help ssc：有关ssc的信息<br>（7）search keyword和findit keyword都是搜索，后者范围更广<br>（8）sysdir：system directories，显示stata的安装路径</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/读书笔记—-贫困与饥荒/" rel="next" title="读书笔记—-贫困与饥荒">
+                <i class="fa fa-chevron-left"></i> 读书笔记—-贫困与饥荒
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/04/读书笔记-制度、技术与中国农业发展/" rel="prev" title="读书笔记-制度、技术与中国农业发展">
+                读书笔记-制度、技术与中国农业发展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.jpg" alt="马荟">
+            
+              <p class="site-author-name" itemprop="name">马荟</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-将数据导入stata"><span class="nav-number">1.</span> <span class="nav-text">1.将数据导入stata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量标签的修改"><span class="nav-number">2.</span> <span class="nav-text">2.变量标签的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-调用数据及基本操作"><span class="nav-number">3.</span> <span class="nav-text">3.调用数据及基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-考察数据的统计特征"><span class="nav-number">4.</span> <span class="nav-text">4.考察数据的统计特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-作图"><span class="nav-number">5.</span> <span class="nav-text">5.作图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-生成新变量"><span class="nav-number">6.</span> <span class="nav-text">6.生成新变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-stata的计算器功能"><span class="nav-number">7.</span> <span class="nav-text">7. stata的计算器功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-线性回归分析"><span class="nav-number">8.</span> <span class="nav-text">8. 线性回归分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-stata命令的存储与调用"><span class="nav-number">9.</span> <span class="nav-text">8. stata命令的存储与调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-stata命令库的更新"><span class="nav-number">10.</span> <span class="nav-text">9. stata命令库的更新</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马荟</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
